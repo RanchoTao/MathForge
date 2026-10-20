@@ -3,7 +3,7 @@
 **Release candidate:** MathForge Core, `v0.1.0-alpha` (planned)  
 **Repository:** `RanchoTao/MathForge`  
 **Snapshot:** 2026-10-20  
-**Current state:** **PRIVATE · PUBLICATION HOLD**
+**Current state (observed 2026-10-20):** **PUBLIC · RIGHTS / PROVENANCE REVIEW OPEN**
 
 This is a **live checklist** for the imported repository, complementing the [current readiness report](../OPEN_SOURCE_READINESS.md). The immutable [candidate baseline](../FILE_MANIFEST.json) and [initial import mapping](../IMPORT_PROVENANCE.json) retain historical provenance; the detailed private pre-import audit is preserved locally and is not distributed here.
 
@@ -40,14 +40,15 @@ This is a **live checklist** for the imported repository, complementing the [cur
 - [x] Mermaid lifecycle labels distinguish implemented Phase 0 from internal-only, experimental, and planned steps; full visual rendering was tested locally. Signed-in browser visual inspection remains outstanding.
 - [ ] Review README statements for accuracy; no public claim of fully autonomous discovery, original theorems, scientific novelty, or NeurIPS acceptance.
 - [ ] Confirm the license transition and security review **before** making the repo public.
-- [ ] Then, and only then, switch GitHub repository visibility to **Public**, confirm the repository is readable in a signed-out session, and optionally create a `v0.1.0-alpha` release tag after one more exact-commit review.
+- [x] Repository visibility has been switched to **Public** (observed via GitHub repository metadata, 2026-10-20). **This is a factual status marker, not a clearance decision.**
+- [ ] Verify signed-out access, resolve any remaining legal/provenance blockers, and independently review the exact commit before any `v0.1.0-alpha` release tag.
 
 > A successful engineering smoke test does **not** establish the validity, originality, or publication-worthiness of generated mathematical results.
 
-## How to switch visibility when gates pass
+## Rights review after visibility change
 
-GitHub repository → **Settings → General → Danger Zone → Change repository visibility → Public**. Review the consequences of making all reachable history accessible. Do **not** perform this step before the unchecked items are resolved.
+The repository is already Public; the incomplete checkboxes remain **real outstanding obligations**, not retroactively completed by the visibility change. If the maintainer is uncertain about any code or image redistribution right, consider returning the repository to **Private** (GitHub Settings → General → Danger Zone) until it is clarified. Public history may already have been copied and cannot be recalled.
 
 ## Communications
 
-Until visibility is Public, this repository URL is not accessible to ordinary external visitors. For early conversations, share a factual description of the **Core alpha** and the intended research pipeline, not unpublished research claims.
+The repository can now be shared as an **early-stage Core alpha** with an architecture diagram and a synthetic demo. Do not advertise the excluded private executor as public functionality, claim unverified mathematical results, or imply that rights/provenance checks have been completed.
