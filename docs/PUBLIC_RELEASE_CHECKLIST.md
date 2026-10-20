@@ -19,7 +19,7 @@ This is a **live checklist** for the imported repository, complementing the [cur
 
 ## Apache-2.0 adoption and rights
 
-**Maintainer selection:** Apache License, Version 2.0 is the chosen license for the eventual Core release. The repository already carries the [official license text](../LICENSE).
+**Maintainer adoption (2026-10-20):** Apache License, Version 2.0 is adopted for original MathForge Core code and documentation within the maintainer's rights. The repository carries the [official license text](../LICENSE), and `pyproject.toml` now uses SPDX `Apache-2.0`. **This does not clear third-party, institution, collaborator or artwork rights.**
 
 **This selection alone does not establish ownership or authorization for all included material.** Before public release, explicitly verify:
 
@@ -28,15 +28,16 @@ This is a **live checklist** for the imported repository, complementing the [cur
 - [ ] The owner has the necessary rights to publish and license **MathForgeBanner.png** and **MathForgeLOGO.png** (and their underlying third-party elements/fonts, if any).
 - [ ] Third-party license and attribution requirements are satisfied, including any necessary `NOTICE`; see [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md).
 - [ ] Authorized holder confirms final copyright attribution and the license grant for this specific release.
-- [ ] After rights confirmation, **as one consistent change**, update `pyproject.toml` from `LicenseRef-Pending-Owner-Approval` to an appropriate Apache-2.0 SPDX declaration, supersede the pending-approval marker in [docs/legal/LICENSE_REVIEW_NOTICE.txt](legal/LICENSE_REVIEW_NOTICE.txt) and [LICENSE_CANDIDATE.md](../LICENSE_CANDIDATE.md), and align README/other notices.
+- [x] Record the explicit maintainer decision, update `pyproject.toml` to SPDX `Apache-2.0`, supersede candidate-only notices, and align README and third-party licensing scope. This grants nothing the maintainer does not own or have permission to distribute.
+- [ ] Finish the separate ownership, institutional/collaborator, and brand-assets authorization review before publication; see [BRANDING.md](../BRANDING.md).
 
-**Do not silently remove the pending-rights marker.** It is a stop condition until the actual rights review is resolved, even though a `LICENSE` file already exists.
+**Licensing metadata is now updated, but rights clearance remains a separate stop condition.** Do not treat SPDX metadata, an image upload, or a successful CI run as independent proof of redistribution authority.
 
 ## Final publication gate
 
 - [ ] Documentation and installation instructions tested against the published commit (Windows CPython 3.13 x64 currently supported).
 - [ ] GitHub Actions jobs on the release commit show success; real Lean integration is optional and is not part of cloud CI by default.
-- [ ] Verify that the research workflow figure clearly distinguishes implemented Phase 0 from internal-only, experimental, and planned features.
+- [x] Mermaid lifecycle labels distinguish implemented Phase 0 from internal-only, experimental, and planned steps; full visual rendering was tested locally. Signed-in browser visual inspection remains outstanding.
 - [ ] Review README statements for accuracy; no public claim of fully autonomous discovery, original theorems, scientific novelty, or NeurIPS acceptance.
 - [ ] Confirm the license transition and security review **before** making the repo public.
 - [ ] Then, and only then, switch GitHub repository visibility to **Public**, confirm the repository is readable in a signed-out session, and optionally create a `v0.1.0-alpha` release tag after one more exact-commit review.
