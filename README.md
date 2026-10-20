@@ -2,6 +2,8 @@
   <img src="./MathForgeBanner.png" alt="MathForge — Automated Mathematical Research" width="100%" />
 </p>
 
+<div align="center">
+
   # MathForge
 
   **Forge mathematical ideas. Verify the evidence.**
@@ -9,10 +11,10 @@
   A research-oriented framework for structured mathematical exploration, verification gates, and reproducible evidence.
 
   [![Status: pre-release](https://img.shields.io/badge/status-pre--release-555555)](#development-status)
-  [![License: Apache-2.0 proposed](https://img.shields.io/badge/license-Apache--2.0%20proposed-D57D43)](#license-and-provenance)
+  [![License: Apache-2.0 selected](https://img.shields.io/badge/license-Apache--2.0%20selected-D57D43)](#license-and-provenance)
   [![Validation: local](https://img.shields.io/badge/validation-local%20candidate-91603B)](#local-validation)
 
-  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Current status](#development-status) · [Roadmap](#roadmap) · [中文简介](#中文简介)**
+  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Current status](#development-status) · [Release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) · [中文简介](#中文简介)**
 </div>
 
 ---
@@ -25,11 +27,11 @@ MathForge is being developed around that cycle. Its long-term goal is a modular,
 
 The distinguishing design priority is **evidence before announcement**: a promising candidate should remain a candidate until the required verification and review have been completed.
 
-> **Scope notice:** This repository is currently a private, pre-release project. As of October 20, 2026, it contains the brand assets, license text, project documentation and the reviewed synthetic CORE source and CI workflow introduced by this private import PR. The full autonomous research system is not being represented as a publicly runnable product.
+> **Scope notice (October 20, 2026):** The reviewed synthetic Core and its CI workflow are committed to this repository following private import PR #1. The repository remains **private pending release authorization**. This Core is an inspectable research-workflow infrastructure candidate, **not** the full internal autonomous mathematical research system. See the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 ## Research workflow
 
-The following diagram is the **intended end-to-end research lifecycle**, not a claim that every step is implemented in this repository today. The definitive implementation map will be published alongside the audited Core source.
+The following diagram is the **intended end-to-end research lifecycle**, not a claim that every step is implemented in the currently imported Phase 0 Core. An implementation-grounded, full-system diagram is being prepared separately and will identify internal-only and planned modules.
 
 ~~~mermaid
 flowchart TD
@@ -63,13 +65,13 @@ MathForge has **two different scopes**: an internal research workspace, and a de
 
 | Area | Verified or current state | Boundary |
 | --- | --- | --- |
-| **Repository contents** | README, brand assets, and Apache-2.0 license text are present. | The executable Core has not been pushed to this repository yet. |
-| **Extracted Core candidate** | 58 files, approximately 205 KB, assembled from a reviewed subset of the original engineering workspace. | Local release candidate only; not a publication of the full workspace. |
+| **Repository contents** | The reviewed Phase 0 Core, synthetic examples, tests, build files, CI workflow, brand assets, and documentation are committed. | The repository remains private; this is not the complete internal research system. |
+| **Extracted Core candidate** | The original audited candidate comprised 58 files (about 205 KB), with its baseline hashes preserved in `FILE_MANIFEST.json` and import mapping recorded in `IMPORT_PROVENANCE.json`. | Imported files were integrated with existing repository content; current GitHub inventory is not identical to the pre-import baseline. |
 | **Schemas, scientific contracts, state graph** | Included in the locally checked Core candidate. | Public APIs and compatibility guarantees are not finalized. |
 | **Audit queue, replay, resource adapters, Inspector** | Core candidate exercised locally in validation. | These are framework mechanisms, not evidence of autonomous research success. |
 | **Lean integration** | A synthetic positive check and invalid-type rejection passed using the real Lean kernel. | This does **not** establish formal proofs of the private research claims. |
 | **Autonomous discovery and paper production** | Long-term research direction; additional internal components and experiments are outside this repository. | No claim of independently verified end-to-end discovery performance. |
-| **Cloud CI and public installation** | Not yet verified for this GitHub repository. | To be tested after the Core source import. |
+| **Cloud CI and public installation** | A GitHub Actions workflow exists, and its initial import validation was reported as passing. | Recheck CI on the final release commit; no public release or independently confirmed installation is claimed. |
 
 The repository will distinguish **implemented**, **experimental**, **internal-only**, and **planned** functionality as the source and documentation expand. A module appearing on a diagram is not, by itself, a verified product capability.
 
@@ -84,7 +86,7 @@ The extracted candidate was audited locally on October 20, 2026. The recorded ch
 - ZIP integrity and file hash verification;
 - confirmation that the original tracked research files were not rewritten.
 
-Earlier validation attempts exposed a SQLite connection-lifetime issue, a Lean timeout, and a Python import-shadowing issue. Those were corrected and the final candidate was retested. **These results are local validation, not a GitHub Actions pass and not a scientific discovery benchmark.**
+Earlier validation attempts exposed a SQLite connection-lifetime issue, a Lean timeout, and a Python import-shadowing issue. Those were corrected and the final candidate was retested. **These results were established locally, not as a scientific discovery benchmark.** A separate GitHub Actions workflow now exists; final public-release validation must use the exact published commit.
 
 ## Getting started
 
@@ -100,7 +102,7 @@ python -m venv .venv
 .venv\Scripts\python -m unittest discover -s tests -v
 ```
 
-Use a new output directory. See [installation](docs/INSTALL.md), [candidate architecture](docs/ARCHITECTURE.md), and [the license review notice](docs/legal/LICENSE_REVIEW_NOTICE.txt). GitHub Actions passed on the initial import commit; this integration with the concurrent README update must pass CI again before merge. The optional real Lean integration was exercised locally and is skipped by cloud CI unless an explicit reviewed toolchain is supplied.
+Use a new output directory. See [installation](docs/INSTALL.md), [candidate architecture](docs/ARCHITECTURE.md), and the [public release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md). The CI workflow tests the synthetic Core; the optional real Lean integration was exercised locally and is skipped by cloud CI unless an explicit reviewed toolchain is supplied. Confirm CI on the actual release commit before publication.
 
 `FILE_MANIFEST.json` is the immutable 58-file pre-import candidate baseline (57 entries plus itself). `IMPORT_PROVENANCE.json` records the initial import mapping and hashes, including its README merge and relocated license review notice. Subsequent documentation updates do not rewrite that historical baseline. Original research history and private audit/validation files are excluded.
 
@@ -119,7 +121,7 @@ Publication of framework code should not be construed as:
 
 | Stage | Goal |
 | --- | --- |
-| **01 · Foundation** | Import the audited Core, verify a clean installation, and run GitHub CI. |
+| **01 · Foundation** | Audited Core imported; complete final-release CI, installation checks, ownership review, and public release. |
 | **02 · Documentation** | Publish the implementation-grounded system map, full research lifecycle, API contracts, and a minimal synthetic example. |
 | **03 · Research tooling** | Improve tool adapters, evidence handling, formal-verification workflows, and clearly defined scientific gates. |
 | **04 · Evaluation** | Compare research workflows under controlled budgets, including failure analysis, independent validation, and ablations. |
@@ -139,14 +141,14 @@ If you use any automated mathematical research workflow, **do not present model-
 
 长期目标是将数学问题输入、历史去重、证明与反例探索、计算验证、Lean 等形式化工具以及证据归档组织为可审计的研究流程，并明确区分 **PASS / HOLD / KILL** 等研究状态。
 
-**当前状态：** GitHub 仓库仍处于私有预发布阶段，已包含品牌素材和文档。一个独立提取的精简 Core 候选已在本地通过 29 项测试与合成 Lean 检查，；精简 CORE 源码现已在本私有导入 PR 中提交，公开分发仍待权属和授权审核，也不能据此声称已经验证完整自主数学发现能力。未发表科研资产不属于计划中的开源 Core。
+**当前状态（2026-10-20）：** GitHub 仓库仍处于私有预发布阶段。经过审查的精简 Core 已随 PR #1 合并，包含合成示例、测试与 CI 工作流；此前已在本地通过 29 项测试及合成 Lean 检查。完整自主数学研究系统与未发表科研资产不在此仓库内。正式公开前仍须确认源码与品牌资产权属，并在最终版本上完成 CI 和发布审核。
 
-欢迎关注后续代码导入、正式架构图与可复现演示。本 README 将随实际实现与独立验证进度更新。
+欢迎关注后续完整架构图、可复现演示和系统评测。本 README 将随实际实现与独立验证进度更新。
 
 ---
 
 ## License and provenance
 
-This repository contains the text of the [Apache License, Version 2.0](./LICENSE), which is the **intended license** for the reviewed Core release. Before public distribution, maintainers must confirm contributor ownership, institutional and collaborator rights, third-party attribution, and the precise files authorized for release. The presence of a license file is **not** a substitute for those checks.
+The maintainer has **selected Apache License, Version 2.0** for the planned Core release. The [license text](./LICENSE) is already present, but the extracted package still carries a pending-approval marker until all applicable ownership, institutional/collaborator rights, third-party notices, and branding permissions are confirmed. The presence of the license text does **not** override the explicit pending-authorization notice in the source package. See the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 **MathForge · Research with evidence.**
