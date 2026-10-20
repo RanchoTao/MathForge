@@ -1,9 +1,9 @@
-# Apache-2.0 候选建议
+# Apache-2.0 License Decision — Supersedes Candidate Proposal
 
-用户已选择 Apache-2.0 作为候选。尚未将此选择当成实际权利授予或发布批准；项目元数据保持 `LicenseRef-Pending-Owner-Approval`。
+**Maintainer decision (2026-10-20):** Adopt the Apache License, Version 2.0 for MathForge Core code and documentation that the maintainer is legally authorized to license. The official terms are in [LICENSE](LICENSE). This file is retained at its historical path so existing audit links continue to work.
 
-正式采用前需确认：提取代码及修改的权利主体、雇佣／机构／合作约定、历史贡献者授权、第三方通知及名称使用权。然后由有权主体填写版权信息，采用完整官方许可证与必要 NOTICE，并单独批准公开发布。当前没有真实作者／机构授权证书，不能由技术测试代替。
+This is a **license selection and expression of intent for authorized work**, not a legal determination that every extracted source, institutional contribution, collaborator contribution, or uploaded image is solely owned by the maintainer. Public distribution remains subject to the rights and provenance checklist in [docs/PUBLIC_RELEASE_CHECKLIST.md](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
-Apache-2.0 提供明确专利授权并设有相关终止条款，分发时要求保留适用许可证、归属与修改通知。MIT 依赖可以独立保留其原许可证与通知；不能把依赖版权简单改写为本项目的许可证。当前不捆绑依赖源码或二进制，也不捆绑 Lean/Mathlib。
+Third-party dependencies are governed by their respective licenses; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The MathForge brand identity and logo/banner artwork are excluded from the Apache-2.0 code grant; see [BRANDING.md](BRANDING.md). An Apache-2.0 license grants no trademark rights.
 
-依据：[Apache 官方文本](https://www.apache.org/licenses/LICENSE-2.0)、[Apache 应用说明](https://www.apache.org/licenses/LICENSE-2.0#apply)、[OSI MIT 文本](https://opensource.org/license/mit)。这里只提出候选与核查事项，不作正式法律认证。
+No private research workspace, private scientific results, private infrastructure, bundled Lean or Mathlib binaries, or third-party wheels are included in this Core repository. The legal review gate is still **HOLD** pending any necessary authorizations; no automated test can certify copyright ownership.
