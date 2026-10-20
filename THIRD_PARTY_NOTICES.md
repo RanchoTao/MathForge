@@ -8,4 +8,4 @@
 
 可选 Lean 与 Mathlib 的版本化许可证见 [Lean 4.24.0](https://github.com/leanprover/lean4/blob/v4.24.0/LICENSE) 与 [Mathlib 4.24.0](https://github.com/leanprover-community/mathlib4/blob/v4.24.0/LICENSE)。当前排除整个分发物；若未来捆绑，需要重新审查其所有第三方组件和通知。
 
-本项目提取代码本身的权属待确认。此通知不授予原工作区或候选项目的公开分发许可。
+MathForge Core 已选择 Apache-2.0 用于维护者有权授权的原创代码与文档；第三方内容始终保留各自授权。本项目提取代码涉及的其他贡献者／机构权利，以及初始图片素材权利，仍须发布前核实。Logo 和 Banner 不是 Apache-2.0 软件授权的一部分；参见 [BRANDING.md](BRANDING.md)。本声明不授权分发私有工作区或任何无权授权的内容。
