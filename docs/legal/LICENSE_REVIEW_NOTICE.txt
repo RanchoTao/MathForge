@@ -1,6 +1,13 @@
-PRIVATE LOCAL CANDIDATE — LICENSE NOT YET GRANTED
+MATHFORGE CORE — APACHE-2.0 SELECTED; PUBLICATION CLEARANCE PENDING
 
-The intended license is Apache License 2.0, subject to confirmation of all
-applicable copyright, employment, institutional and contributor rights and an
-explicit adoption by the authorized rights holder. This file is not a grant
-of public redistribution rights. See LICENSE_CANDIDATE.md.
+The maintainer selected Apache License, Version 2.0 for Core code and
+documentation that the maintainer is authorized to license. See LICENSE.
+
+This decision does not itself establish rights over third-party,
+institutional, collaborator, or historically derived contributions.
+The repository remains private pending the distribution rights and
+branding checks in docs/PUBLIC_RELEASE_CHECKLIST.md.
+
+MathForgeBanner.png and MathForgeLOGO.png are not covered by the Core
+software license. See BRANDING.md. This notice does not authorize
+the distribution of non-owned material or private research assets.
