@@ -5,8 +5,8 @@ documentation that the maintainer is authorized to license. See LICENSE.
 
 This decision does not itself establish rights over third-party,
 institutional, collaborator, or historically derived contributions.
-The repository remains private pending the distribution rights and
-branding checks in docs/PUBLIC_RELEASE_CHECKLIST.md.
+The repository is now publicly visible, but the distribution-rights and
+branding checks are still open in docs/PUBLIC_RELEASE_CHECKLIST.md.
 
 MathForgeBanner.png and MathForgeLOGO.png are not covered by the Core
 software license. See BRANDING.md. This notice does not authorize
