@@ -14,7 +14,7 @@
   [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
   [![Candidate core tests](https://github.com/RanchoTao/MathForge/actions/workflows/ci.yml/badge.svg)](https://github.com/RanchoTao/MathForge/actions/workflows/ci.yml)
 
-  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Current status](#development-status) · [Roadmap](#roadmap) · [Full workflow](docs/architecture/FULL_RESEARCH_WORKFLOW.md) · [Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md) · [Release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) · [中文简介](#中文简介)**
+  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Full end-to-end diagram](docs/architecture/FULL_RESEARCH_WORKFLOW.md) · [Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md) · [Release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) · [中文简介](#中文简介)**
 </div>
 
 ---
@@ -27,7 +27,7 @@ MathForge is being developed around that cycle. Its long-term goal is a modular,
 
 The distinguishing design priority is **evidence before announcement**: a promising candidate should remain a candidate until the required verification and review have been completed.
 
-> **Scope notice:** This repository is currently a private, pre-release project. As of October 20, 2026, it contains the brand assets, license text, project documentation and the reviewed synthetic CORE source and CI workflow merged through [PR #1](https://github.com/RanchoTao/MathForge/pull/1). The full autonomous research system is not being represented as a publicly runnable product. **The maintainer has adopted Apache-2.0 for Core code and docs within their licensing authority; final public distribution still requires provenance and image-rights clearance.** See the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
+> **Scope notice:** This repository is now publicly visible as a pre-release MathForge Core project. As of October 20, 2026, it contains the brand assets, license text, project documentation and the reviewed synthetic CORE source and CI workflow merged through [PR #1](https://github.com/RanchoTao/MathForge/pull/1). The full autonomous research system is not being represented as a publicly runnable product. **The maintainer has adopted Apache-2.0 for authorized Core code and docs. The repository became public while the final historical-code and artwork rights review was still open; public visibility is not itself a rights-clearance certificate.** See the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 ## Research workflow
 
@@ -172,10 +172,10 @@ MathForge combines evidence tracking, explicit scientific gates and reproducible
 
 **目前已实现：** 私有 GitHub 仓库已导入经过审计的 Phase 0 Core，包含合成示例、状态与证据检查、持久审计队列、限定范围的 Lean 检查接口，以及相关测试和 CI。Core **不包含**完整的自主选题、全天候研究执行器、未发表论文或内部科研数据。详情见[全流程图](docs/architecture/FULL_RESEARCH_WORKFLOW.md)与[公开版/内部版能力对照](docs/architecture/CORE_VS_INTERNAL.md)。
 
-**授权状态：** Core 采用 Apache-2.0（以维护者具有相应授权权利的代码和文档为限）；Logo 和 Banner 另行管理，详见 [BRANDING.md](BRANDING.md)。代码来源及图片权限在公开发布前仍须核实。仓库最新公开状态请以 GitHub 页面为准。
+**授权状态：** Core 采用 Apache-2.0（以维护者具有相应授权权利的代码和文档为限）；Logo 和 Banner 另行管理，详见 [BRANDING.md](BRANDING.md)。仓库已公开，但代码来源及图片权限仍需最终确认；公开可见不等于这些权属检查已经完成。
 
 ## License and provenance
 
-The maintainer has adopted the [Apache License, Version 2.0](LICENSE) for MathForge Core code and documentation that they are authorized to license; see the SPDX expression in [pyproject.toml](pyproject.toml). Third-party components retain their own terms ([notices](THIRD_PARTY_NOTICES.md)). **Brand artwork and trademarks are separate:** see [BRANDING.md](BRANDING.md). Before making the repository public, the maintainer must finish the ownership, provenance, and media permission review described in the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
+The maintainer has adopted the [Apache License, Version 2.0](LICENSE) for MathForge Core code and documentation that they are authorized to license; see the SPDX expression in [pyproject.toml](pyproject.toml). Third-party components retain their own terms ([notices](THIRD_PARTY_NOTICES.md)). **Brand artwork and trademarks are separate:** see [BRANDING.md](BRANDING.md). The repository is now public, but ownership, provenance, and media permission checks are still recorded as open in the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md); visibility does not settle those rights.
 
 **MathForge · Research with evidence.**
