@@ -14,6 +14,6 @@ MathForge Core code and documentation for which the maintainer has the necessary
 
 You may refer truthfully to MathForge, link to the repository, and describe compatibility as permitted by applicable law. Permissions to reproduce, modify, redistribute, or commercially use the artwork itself should be obtained separately from the authorized rights holder, except where applicable law already permits the use.
 
-**Before making this repository public,** the maintainer should verify the provenance and permissions for each image, including any third-party fonts, source graphics, stock elements, or collaborator contributions. If rights cannot be cleared, replace or remove the affected media before publication. This document does not assert ownership of third-party material.
+**Now that this repository is public,** the maintainer should promptly verify the provenance and permissions for each image, including any third-party fonts, source graphics, stock elements, or collaborator contributions. If rights cannot be cleared, replace or remove the affected media before publication. This document does not assert ownership of third-party material.
 
 To request permission for brand artwork, use the repository's maintainer/contact channels after public launch.
