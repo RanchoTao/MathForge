@@ -5,10 +5,10 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "mathforge-framework-candidate"
 version = "0.1.0.dev0"
-description = "Private candidate: fail-closed research workflow infrastructure with synthetic examples"
+description = "Auditable MathForge Core infrastructure for mathematical research workflows with synthetic examples"
 readme = "README.md"
 requires-python = ">=3.13,<3.14"
-license = {text = "LicenseRef-Pending-Owner-Approval"}
+license = "Apache-2.0"
 dependencies = ["jsonschema==4.25.1"]
 
 [project.scripts]
