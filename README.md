@@ -2,6 +2,8 @@
   <img src="./MathForgeBanner.png" alt="MathForge — Automated Mathematical Research" width="100%" />
 </p>
 
+<div align="center">
+
   # MathForge
 
   **Forge mathematical ideas. Verify the evidence.**
@@ -9,10 +11,10 @@
   A research-oriented framework for structured mathematical exploration, verification gates, and reproducible evidence.
 
   [![Status: pre-release](https://img.shields.io/badge/status-pre--release-555555)](#development-status)
-  [![License: Apache-2.0 proposed](https://img.shields.io/badge/license-Apache--2.0%20proposed-D57D43)](#license-and-provenance)
+  [![License: Apache-2.0 selected](https://img.shields.io/badge/license-Apache--2.0%20selected-D57D43)](#license-and-provenance)
   [![Candidate core tests](https://github.com/RanchoTao/MathForge/actions/workflows/ci.yml/badge.svg)](https://github.com/RanchoTao/MathForge/actions/workflows/ci.yml)
 
-  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Current status](#development-status) · [Roadmap](#roadmap) · [Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md)**
+  **[Overview](#what-is-mathforge) · [Research workflow](#research-workflow) · [Current status](#development-status) · [Roadmap](#roadmap) · [Architecture](docs/architecture/SYSTEM_ARCHITECTURE.md) · [Release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md) · [中文简介](#中文简介)**
 </div>
 
 ---
@@ -25,7 +27,7 @@ MathForge is being developed around that cycle. Its long-term goal is a modular,
 
 The distinguishing design priority is **evidence before announcement**: a promising candidate should remain a candidate until the required verification and review have been completed.
 
-> **Scope notice:** This repository is currently a private, pre-release project. As of October 20, 2026, it contains the brand assets, license text, project documentation and the reviewed synthetic CORE source and CI workflow merged through [PR #1](https://github.com/RanchoTao/MathForge/pull/1). The full autonomous research system is not being represented as a publicly runnable product.
+> **Scope notice:** This repository is currently a private, pre-release project. As of October 20, 2026, it contains the brand assets, license text, project documentation and the reviewed synthetic CORE source and CI workflow merged through [PR #1](https://github.com/RanchoTao/MathForge/pull/1). The full autonomous research system is not being represented as a publicly runnable product. **Apache-2.0 has been selected for a future public Core release, but rights clearance is still pending; see the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).**
 
 ## Research workflow
 
@@ -125,7 +127,7 @@ python -m venv .venv
 .venv\Scripts\python -m unittest discover -s tests -v
 ```
 
-Use a new output directory. See [installation](docs/INSTALL.md), [candidate architecture](docs/ARCHITECTURE.md), and [the license review notice](docs/legal/LICENSE_REVIEW_NOTICE.txt). GitHub Actions passed on both the initial import and the integrated README commit before PR #1 was merged. The optional real Lean integration was exercised locally and is skipped by cloud CI unless an explicit reviewed toolchain is supplied.
+Use a new output directory. See [installation](docs/INSTALL.md), [candidate architecture](docs/ARCHITECTURE.md), the [license review notice](docs/legal/LICENSE_REVIEW_NOTICE.txt), and the [public release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md). GitHub Actions passed on both the initial import and the integrated README commit before PR #1 was merged. The optional real Lean integration was exercised locally and is skipped by cloud CI unless an explicit reviewed toolchain is supplied.
 
 `CURRENT_FILE_MANIFEST.json` lists the current distributed file hashes (excluding itself). `FILE_MANIFEST.json` is the immutable 58-file pre-import candidate baseline (57 entries plus itself). `IMPORT_PROVENANCE.json` records the initial import mapping and hashes, including its README merge and relocated license review notice. Subsequent documentation updates do not rewrite that historical baseline. Original research history and private audit/validation files are excluded.
 
@@ -164,8 +166,16 @@ MathForge combines evidence tracking, explicit scientific gates and reproducible
 
 ---
 
+## 中文简介
+
+**MathForge** 是一个面向可验证数学研究的框架项目，目标是让数学问题描述、证据记录、研究状态、独立复核和形式化验证能够组成可追踪、可审计的工作流。
+
+**目前已实现：** 私有 GitHub 仓库已导入经过审计的 Phase 0 Core，包含合成示例、状态与证据检查、持久审计队列、限定范围的 Lean 检查接口，以及相关测试和 CI。Core **不包含**完整的自主选题、全天候研究执行器、未发表论文或内部科研数据。详情见[全流程图](docs/architecture/FULL_RESEARCH_WORKFLOW.md)与[公开版/内部版能力对照](docs/architecture/CORE_VS_INTERNAL.md)。
+
+**开源状态：** 已选定 Apache-2.0 作为计划发布许可证，但代码及品牌素材的权属授权和最终发布门禁仍待确认；目前不要将私有仓库 URL 当作可供外部访问的开源链接。
+
 ## License and provenance
 
-This repository contains the text of the [Apache License, Version 2.0](./LICENSE), which is the **intended license** for the reviewed Core release. Before public distribution, maintainers must confirm contributor ownership, institutional and collaborator rights, third-party attribution, and the precise files authorized for release. The presence of a license file is **not** a substitute for those checks.
+The maintainer has **selected Apache License, Version 2.0** for the planned Core release. The [license text](./LICENSE) is already present, but the extracted package retains its pending-rights marker until applicable ownership, institutional or collaborator rights, third-party notices, and branding permissions are confirmed. The presence of a license file does **not** override that pending-authorization notice. See the [release checklist](docs/PUBLIC_RELEASE_CHECKLIST.md).
 
 **MathForge · Research with evidence.**
