@@ -129,6 +129,41 @@ def check_open_evidence(evidence, sources, when, max_age, problem_id, statement)
     require(supported, 'VERIFIED_OPEN requires fresh full-text official-list evidence in Phase 0')
 
 
+STATUS_VALUES = {'OPEN_STATUS_UNVERIFIED', 'VERIFIED_OPEN', 'PARTIALLY_SOLVED', 'KNOWN_RESULT', 'FALSIFIED'}
+
+# A status value above the default must already be justified by the workflow state
+# recorded in the same card. OPEN_STATUS_UNVERIFIED is the default; VERIFIED_OPEN is
+# checked separately because it also carries evidence and a binding.
+STATUS_STATES = {
+    'KNOWN_RESULT': {'COLLISION_FOUND', 'KNOWN_RESULT_REDISCOVERED', 'PROVED'},
+    'PARTIALLY_SOLVED': {'PARTIALLY_SOLVED', 'PARTIAL_PROGRESS'},
+    'FALSIFIED': {'FALSIFIED'},
+}
+
+
+def project_status(card, events):
+    """Derive the current open-status projection from the card plus the event log.
+
+    The atlas record is a genesis snapshot and is never rewritten, so a promotion
+    recorded as an event never appears in ``card['status']``. Anything that reads or
+    exports the claimed status must use this projection, not the raw field.
+    """
+    status = copy.deepcopy(card['status'])
+    audit = copy.deepcopy(card['audit'])
+    for event in events:
+        if event['problem_id'] != card['problem_id']:
+            continue
+        if event['to'] == 'VERIFIED_OPEN':
+            status.update(value='VERIFIED_OPEN', last_verified=event['at'][:10],
+                          confidence='source_supported',
+                          evidence=[item for item in event['evidence'] if item['supports'] == 'open_status'])
+            audit['open_status'] = 'verified'
+        elif status['value'] == 'VERIFIED_OPEN':
+            status.update(value='OPEN_STATUS_UNVERIFIED', confidence='unknown')
+            audit['open_status'] = 'unverified'
+    return status, audit
+
+
 def check_edge(before, after, transitions):
     require(before in transitions and after in transitions[before], f'illegal transition: {before} -> {after}')
 
@@ -210,12 +245,17 @@ def load_repository(root=ROOT, today=None):
             before = event['to']
         require(before == card['research_state'], f'{pid}: history/state mismatch')
         status = card['status']
+        require(status['value'] in STATUS_VALUES, 'unknown status value')
         if status['value'] == 'VERIFIED_OPEN':
+            require(card['research_state'] == 'VERIFIED_OPEN', 'card claims VERIFIED_OPEN that the workflow has not reached')
             require(status['last_verified'] is not None and card['audit']['open_status'] == 'verified' and status['confidence'] == 'source_supported', 'missing status provenance')
             require(date.fromisoformat(status['last_verified']) <= today, 'status verification is in the future')
             check_open_evidence(status['evidence'], sources, date.fromisoformat(status['last_verified']), policy['open_evidence_max_age_days'],pid,card['canonical_statement'])
         else:
             require(card['audit']['open_status'] == 'unverified', 'inconsistent open-status audit')
+            justified = STATUS_STATES.get(status['value'])
+            if justified is not None:
+                require(card['research_state'] in justified, f'status {status["value"]} is not supported by workflow state {card["research_state"]}')
     for negative in negatives_list:
         check_evidence(negative, sources)
         for pid in negative['problem_ids']:
@@ -259,8 +299,10 @@ def load_repository(root=ROOT, today=None):
         previous_at = instant
         states[event['problem_id']] = event['to']
         previous_hash = event['hash']
-    stale = [p['problem_id'] for p in cards if p['status']['value'] == 'VERIFIED_OPEN' and (today - date.fromisoformat(p['status']['last_verified'])).days > policy['open_evidence_max_age_days']]
-    return dict(problems=problems, sources=sources, fields=fields, negatives=negatives, candidates=candidates, events=events, states=states, policy=policy, transitions=transitions, stale_open_status=stale)
+    projected = {pid: project_status(card, events) for pid, card in problems.items()}
+    stale = [pid for pid, (status, _) in projected.items()
+             if status['value'] == 'VERIFIED_OPEN' and (today - date.fromisoformat(status['last_verified'])).days > policy['open_evidence_max_age_days']]
+    return dict(problems=problems, sources=sources, fields=fields, negatives=negatives, candidates=candidates, events=events, states=states, policy=policy, transitions=transitions, projected_status=projected, stale_open_status=stale)
 
 
 def replay_blocks(pid, negatives):
@@ -325,5 +367,8 @@ def export_cards(data):
         card = cards[event['problem_id']]
         card['research_state'] = event['to']
         card['research_history'].append({k:event[k] for k in ['from','to','at','actor','reason','evidence']})
+    # Overlay the projected open status: the raw card field is the genesis snapshot only.
+    for pid, card in cards.items():
+        card['status'], card['audit'] = copy.deepcopy(data['projected_status'][pid])
     return list(cards.values())
 

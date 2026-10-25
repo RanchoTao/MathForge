@@ -3,8 +3,8 @@
   "files": [
     {
       "path": ".github/workflows/ci.yml",
-      "bytes": 924,
-      "sha256": "b64ff26f8501abb79ebddc8131d335d4f32c2887676b0d25e1d3bdd76375c3c6"
+      "bytes": 971,
+      "sha256": "85a782e4d63d17bd69aea14c1f9557eaf0e8c5f13dceba01e40ecf26c31c15c3"
     },
     {
       "path": ".gitignore",
@@ -13,8 +13,13 @@
     },
     {
       "path": "AGENTS.md",
-      "bytes": 748,
-      "sha256": "684a26ac54a78ea8368fd04ce2e69e8b1ed0cb7a0f2a689a97d36a9481af5b52"
+      "bytes": 890,
+      "sha256": "3e097b41532d842bfdf55f62942a8d48347925c2953195e0daa2f1ac0b952355"
+    },
+    {
+      "path": "BRANDING.md",
+      "bytes": 1518,
+      "sha256": "544657a09947e6248631bf3bb55dfafd62a1dc31a17aeeb6bf12c4c7067394bc"
     },
     {
       "path": "DEPENDENCY_INVENTORY.json",
@@ -38,8 +43,8 @@
     },
     {
       "path": "LICENSE_CANDIDATE.md",
-      "bytes": 1138,
-      "sha256": "42a1d9fad48ffb71eb4f89597a9b22b32528efa462b21daf0683f39c03417eb2"
+      "bytes": 1370,
+      "sha256": "d2fb6504c7d0730356b0f080966a22f4f4f5974209348f8dc6565ba02c9759a2"
     },
     {
       "path": "MathForgeBanner.png",
@@ -53,13 +58,13 @@
     },
     {
       "path": "OPEN_SOURCE_READINESS.md",
-      "bytes": 1375,
-      "sha256": "7bf4bee3d338900400c4c9b142d382cd485952bd4ade24b15e7fca09c2665bfa"
+      "bytes": 1585,
+      "sha256": "9435f90eb206f9a59f1a87ff3077744a2fde0f5edcf2e64541ea524ac5779d2e"
     },
     {
       "path": "README.md",
-      "bytes": 15145,
-      "sha256": "b09bd4ff81704f8862abd6c8988e2d7a9420f1266c749c00a99ab725f49def80"
+      "bytes": 15469,
+      "sha256": "b164ac26ef7a5fcf858fca1f0eca3549c77868dc9df956776143a1b2c6cbecda"
     },
     {
       "path": "RESEARCH_STATE.md",
@@ -73,8 +78,8 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 1020,
-      "sha256": "72169cd53342b74e14f5fb5677010ee9de437bc1fb47cdd7846d3746fc087764"
+      "bytes": 1324,
+      "sha256": "553ee6fce068b82c0efb62a378a930f987dcc9d97e026cdee1a7559304bcea70"
     },
     {
       "path": "atlas/atlas.jsonl",
@@ -98,8 +103,8 @@
     },
     {
       "path": "docs/PUBLIC_RELEASE_CHECKLIST.md",
-      "bytes": 5192,
-      "sha256": "5fbb6e484add9bb383b3a3323ab77434ef3624eefe40791700a91fa5236a7bf2"
+      "bytes": 5896,
+      "sha256": "302d5afae0687142490b67db3bcd2c4dbad723a37081c9afefc90c4fe7707b1f"
     },
     {
       "path": "docs/architecture/CORE_VS_INTERNAL.md",
@@ -128,8 +133,8 @@
     },
     {
       "path": "docs/legal/LICENSE_REVIEW_NOTICE.txt",
-      "bytes": 341,
-      "sha256": "86eefa53f02fb80883b85446c84c053798fc66e39d18765c3b2cab2eaf9d08a0"
+      "bytes": 692,
+      "sha256": "889b197d2b18a77dc6af7b901c0b4ebdfb1ecc650130e06de2cb4021e089abf7"
     },
     {
       "path": "examples/block-demo.json",
@@ -163,8 +168,8 @@
     },
     {
       "path": "pyproject.toml",
-      "bytes": 633,
-      "sha256": "afddfab9b81f3676eb0ca7d917438ee464e93fb497771482c78b444ac0588107"
+      "bytes": 613,
+      "sha256": "a12f549e8856ccd927e26e9d3a2fbd39b4673d0aab860ddc908d27acd817e749"
     },
     {
       "path": "requirements-build.lock",
@@ -313,8 +318,8 @@
     },
     {
       "path": "src/mathforge/engine.py",
-      "bytes": 15985,
-      "sha256": "1620400b5f128350b2763e0136d88efbc2c1d16ae7b2c3d3f2f53fac8cc20394"
+      "bytes": 18416,
+      "sha256": "f31090562b7676be9026ef6aeade0475f301d2a576b6401cece68d702d221c37"
     },
     {
       "path": "src/mathforge/lean.py",
@@ -338,8 +343,8 @@
     },
     {
       "path": "tests/test_framework.py",
-      "bytes": 9661,
-      "sha256": "422774858f72b02f118a4923bb7f022c3c12d286fe28269b6b176abc7e199b15"
+      "bytes": 14223,
+      "sha256": "45ee04a9fd9172bf48a231e51e2a020569933dd498381669935cfaeaf4767cee"
     }
   ]
 }

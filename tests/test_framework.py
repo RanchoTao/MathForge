@@ -5,6 +5,8 @@ from datetime import date, timedelta
 import json
 import os
 from pathlib import Path
+import subprocess
+import sys
 import tempfile
 import unittest
 from mathforge import engine
@@ -146,5 +148,84 @@ class LeanInterfaceTests(Fixture):
         bad=self.task();bad['targets'][0]['type']='False'
         fail=lean.check(bad,self.root/'reports/local/false',workspace=self.root,lean=exe,reviewed_policy=policy)
         self.assertEqual(fail['status'],'HOLD');self.assertFalse(fail['scoped_kernel_checked'])
+
+class StatusProjectionTests(Fixture):
+    """The claimed open status must never outrun the workflow that justifies it."""
+
+    def add_open_source(self, source_id='SRC-PROBE', locator='https://example.invalid/probe'):
+        retrieved = date.today().isoformat()
+        path = self.root/'knowledge/sources/catalog.json'
+        rows = engine.read_json(path)
+        rows.append(dict(source_id=source_id, title='Synthetic probe source', authors=['fixture'],
+                         url=locator, kind='official_problem_list', access='full_text',
+                         retrieved_on=retrieved, publication_year=None, version=None,
+                         provenance=dict(actor='fixture', recorded_at=retrieved+'T00:00:00+00:00',
+                                         method='synthetic probe', limitations='not a real source'),
+                         status_bindings={'MF-0000': dict(
+                             statement_sha256=engine.digest(self.card()['canonical_statement']),
+                             locator=locator)}))
+        path.write_text(json.dumps(rows, indent=2))
+        return dict(source_id=source_id, locator=locator, supports='open_status', note='synthetic probe')
+
+    def promote(self, evidence):
+        return engine.append_transition(self.root, dict(problem_id='MF-0000',
+            **{'from':'OPEN_STATUS_UNVERIFIED','to':'VERIFIED_OPEN'},
+            actor='critic', reason='Synthetic projection fixture.', evidence=[evidence]))
+
+    def test_card_status_cannot_outrun_workflow_state(self):
+        c=self.card();c['status']['value']='KNOWN_RESULT';self.save_card(c)
+        with self.assertRaises(engine.IntegrityError):engine.load_repository(self.root)
+
+    def test_partially_solved_status_needs_matching_state(self):
+        c=self.card();c['status']['value']='PARTIALLY_SOLVED';self.save_card(c)
+        with self.assertRaises(engine.IntegrityError):engine.load_repository(self.root)
+
+    def test_card_verified_open_needs_matching_state(self):
+        c=self.card()
+        c['status'].update(value='VERIFIED_OPEN',last_verified=str(date.today()),confidence='source_supported')
+        c['audit']['open_status']='verified';self.save_card(c)
+        with self.assertRaisesRegex(engine.IntegrityError,'has not reached'):engine.load_repository(self.root)
+
+    def test_promotion_is_projected_into_the_export(self):
+        self.promote(self.add_open_source())
+        data=engine.load_repository(self.root)
+        card=engine.export_cards(data)[0]
+        self.assertEqual(card['research_state'],'VERIFIED_OPEN')
+        self.assertEqual(card['status']['value'],'VERIFIED_OPEN')
+        self.assertEqual(card['status']['last_verified'],date.today().isoformat())
+        self.assertEqual(card['status']['confidence'],'source_supported')
+        self.assertEqual(card['audit']['open_status'],'verified')
+        self.assertEqual(card['status']['evidence'][0]['source_id'],'SRC-PROBE')
+        self.assertEqual(data['stale_open_status'],[])
+
+    def test_projected_promotion_expires_and_blocks_export(self):
+        self.promote(self.add_open_source())
+        data=engine.load_repository(self.root,today=date.today()+timedelta(days=200))
+        self.assertEqual(data['stale_open_status'],['MF-0000'])
+        with self.assertRaises(engine.IntegrityError):engine.export_cards(data)
+
+    def test_projection_downgrades_after_leaving_verified_open(self):
+        self.promote(self.add_open_source())
+        engine.append_transition(self.root, dict(problem_id='MF-0000',
+            **{'from':'VERIFIED_OPEN','to':'BLOCKED'},
+            actor='critic', reason='Synthetic downgrade fixture.', evidence=[]))
+        data=engine.load_repository(self.root)
+        card=engine.export_cards(data)[0]
+        self.assertEqual(card['research_state'],'BLOCKED')
+        self.assertEqual(card['status']['value'],'OPEN_STATUS_UNVERIFIED')
+        self.assertEqual(card['audit']['open_status'],'unverified')
+        self.assertEqual(data['stale_open_status'],[])
+
+
+class ManifestTests(unittest.TestCase):
+    """Recorded distribution hashes are a gate, not a one-off audit."""
+
+    def test_tracked_tree_matches_the_manifest(self):
+        root=Path(__file__).resolve().parents[1]
+        if not (root/'.git').exists(): self.skipTest('source checkout required')
+        result=subprocess.run([sys.executable,str(root/'scripts/verify_manifest.py'),'--root',str(root)],
+                              capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stdout+result.stderr)
+
 
 if __name__=='__main__':unittest.main()
