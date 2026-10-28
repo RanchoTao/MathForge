@@ -64,5 +64,22 @@ class WindowsMemoryJob:
     def __enter__(self):
         return self
 
+    def usage(self):
+        """Measured job accounting, including the worker after it exits."""
+        class Accounting(ctypes.Structure):
+            _fields_ = [('user', ctypes.c_int64), ('kernel', ctypes.c_int64),
+                        ('period_user', ctypes.c_int64), ('period_kernel', ctypes.c_int64),
+                        ('faults', wintypes.DWORD), ('total', wintypes.DWORD),
+                        ('active', wintypes.DWORD), ('terminated', wintypes.DWORD)]
+        query = self.kernel.QueryInformationJobObject
+        query.argtypes = (wintypes.HANDLE, ctypes.c_int, ctypes.c_void_p, wintypes.DWORD, ctypes.c_void_p)
+        query.restype = wintypes.BOOL
+        accounting, limits = Accounting(), ExtendedLimits()
+        for kind, value in [(1, accounting), (9, limits)]:
+            if not query(self.handle, kind, ctypes.byref(value), ctypes.sizeof(value), None):
+                raise ctypes.WinError(ctypes.get_last_error())
+        return dict(cpu_seconds=(accounting.user + accounting.kernel) / 10_000_000,
+                    peak_job_bytes=limits.peak_job_memory)
+
     def __exit__(self, *args):
         self.kernel.CloseHandle(self.handle)

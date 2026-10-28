@@ -1,5 +1,12 @@
 # 第三方边界
 
+V0.4 adds one unchanged public Lean source file from The Formal Conjectures Authors,
+google-deepmind/formal-conjectures revision2c24ebe7eb2a79b47f9ffcab618cd611c2bc1ea6,
+FormalConjectures/Wikipedia/UnionClosed.lean, under Apache-2.0. Its copyright header
+and complete license are retained in sources/conjmap-fin2/. The separate admission
+card and bounded checker are new MathForge integration work, not upstream proofs.
+Linked papers/websites retain their own rights; no private research history is copied.
+
 候选包没有捆绑第三方库、Lean、Mathlib、虚拟环境或旧 Git 对象。
 
 运行依赖：jsonschema、attrs、jsonschema-specifications、referencing、rpds-py。此次下载的构件主许可证均为 MIT；精确版本与哈希见 requirements.lock。安装后的依赖仍受其自身许可证与归属通知约束。
