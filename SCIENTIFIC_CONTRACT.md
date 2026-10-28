@@ -27,6 +27,23 @@
 
 ## Enforced boundary and trust
 
+### V0.4 explicitly authorized, separately admitted calibration audit
+
+The owner request dated2026-10-24 authorizes one source-bound offline task, at most60s,
+without bypassing scientific admission. `source_audit.py` implements a separate fixed
+allowlist for the known Fin2 half-frequency calibration linked to Formal Conjectures.
+It is NOT an exception to Phase0 workflow transitions: the bootstrap policy and its
+research/proof permissions stay false. No general conjecture proof or novelty claim is accepted.
+Engine-owned admission binds exact original statement/variant, public-source hash,
+hypotheses, a versioned replay-clearance snapshot, agent desk reviews and a one-task
+engine-root reservation. Missing/drifting inputs reject execution. This limited audit
+runtime is opt-in and distinct from the existing synthetic validate/export queue.
+
+The actual finite table and two agreeing implementations remain computational evidence;
+they do not replace an independently reviewed encoding, Lean kernel receipt or human
+review. HMAC authenticates transport within a trusted local boundary, not public authorship
+or mathematical truth. See docs/CONJMAP_SOURCE_AUDIT_V04.md for scope and recovery.
+
 The Phase 0 CLI validates schema, links, source metadata, state transitions, dates and
 replay restrictions. It refuses all proof acceptance and research execution. It does not
 verify the truth of prose or authenticity of an arbitrary URL. Formal verifier adapters,

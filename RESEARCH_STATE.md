@@ -1,5 +1,11 @@
 # Research state machine
 
+V0.4 additive boundary: the independently stored source-audit process states
+queued/running/completed/failed/rejected/interrupted/cancelled are operational records,
+not new legal mathematical workflow edges. Only the engine-owned known finite
+calibration in docs/CONJMAP_SOURCE_AUDIT_V04.md is eligible; it never sets PROVED,
+VERIFIED_OPEN or novelty status and never revives historical blocked work.
+
 Legal edges are authoritative in orchestration/transitions.json:
 
 - `UNMAPPED` → `MAPPED`

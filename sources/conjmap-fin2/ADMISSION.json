@@ -1,0 +1,64 @@
+{
+  "admission_id": "cm-v04-union-closed-fin2-v1",
+  "decision": "ADMITTED_KNOWN_FINITE_CALIBRATION",
+  "problem_id": "cm-000118",
+  "task_type": "union_closed_fin2_frequency",
+  "statement": "For every finite union-closed family of sets, other than the family containing only the empty set,\nthere exists an element that belongs to at least half of the sets in the family.",
+  "formal_statement": "union_closed\n    [Nonempty n]\n    (h_ne_singleton_empty : A ≠ {∅})\n    (h_union_closed : IsUnionClosed A) :\n    ∃ i : n, (1 / 2 : ℚ) * #A ≤ #{x ∈ A | i ∈ x}",
+  "variant_signature": "theorem union_closed.variants.univ_card_two (A : Finset (Finset (Fin 2)))\n    (h_ne_singleton_empty : A ≠ {∅})\n    (h_union_closed : IsUnionClosed A) :\n    ∃ i, (1 / 2 : ℚ) * #A ≤ #{x ∈ A | i ∈ x}",
+  "source_binding": {
+    "source_id": "formal-conjectures",
+    "revision": "2c24ebe7eb2a79b47f9ffcab618cd611c2bc1ea6",
+    "path": "FormalConjectures/Wikipedia/UnionClosed.lean",
+    "sha256": "2eed6f767e60e2103c3edb55d74416ab58961129cf89edcb0f9861b47698a265",
+    "statement_sha256": "3c513ed8135e191b1ad4239f218368be09df8899b05596c7322be05ce7ccb47c"
+  },
+  "source_url": "https://github.com/google-deepmind/formal-conjectures/blob/2c24ebe7eb2a79b47f9ffcab618cd611c2bc1ea6/FormalConjectures/Wikipedia/UnionClosed.lean#L115-L118",
+  "license": "Apache-2.0",
+  "attribution": "The Formal Conjectures Authors",
+  "reviewed_at": "2026-10-24",
+  "required_source_fragments": [
+    "abbrev IsUnionClosed (A : Finset (Finset n)) : Prop :=",
+    "∀ᵉ (X ∈ A) (Y ∈ A), X ∪ Y ∈ A",
+    "(h_ne_singleton_empty : A ≠ {∅})",
+    "(A : Finset (Finset (Fin 2)))",
+    "∃ i, (1 / 2 : ℚ) * #A ≤ #{x ∈ A | i ∈ x}"
+  ],
+  "hypotheses": [
+    "Ground set exactly Fin 2, all four subsets and16 families.",
+    "Exclude exactly singleton family {empty}; retain empty family.",
+    "Closure is binary set union for every ordered member pair."
+  ],
+  "quantifiers": "For every qualifying family A, there exists i in {0,1} with2*frequency(i,A)>=|A|.",
+  "scope": "Source-bound known finite calibration. Not new mathematics, not general union-closed theorem, not kernel verification.",
+  "history_clearance": {
+    "decision": "DISTINCT_TARGET_NO_REPLAY",
+    "checked_at": "2026-10-24",
+    "legacy_replay_record_sha256": "de87ca6b46f505cba20a461dda4f83ad3984dc6b37c4d376dde7bd387a9f1998",
+    "reason": "Legacy minimal-generator/join-irreducible target is distinct from the Fin2 frequency calibration. Historical KILL and replay restrictions unchanged; no novelty sentinel.",
+    "local_validators": "atlas/counterexample/local research validators passed read-only before admission",
+    "snapshot_sha256": "a40965248d8c32bf99bd577015906329552d45e16e7818456705e62ef97d5445"
+  },
+  "reviews": [
+    {
+      "reviewer": "ConjMap V0.4 root integration engineer (agent)",
+      "scope": "Exact public source signature, variable domain, queue and resource admission; user explicitly authorized one<=60s offline task.",
+      "decision": "ADMIT_ONLY_KNOWN_FINITE_CALIBRATION"
+    },
+    {
+      "reviewer": "separate ConjMap V0.4 relation review agent",
+      "scope": "Independent desk audit of Fin2 signature and replay target difference; not human or engine authorization.",
+      "decision": "ACCEPTABLE_FOR_ENGINE_ADMISSION_REVIEW"
+    }
+  ],
+  "execution_authorization": {
+    "source": "Explicit owner V0.4 request dated2026-10-24",
+    "max_tasks": 1,
+    "wall_seconds": 60,
+    "network": false,
+    "gpu": false,
+    "paid_api": false
+  },
+  "scientific_status": "unverified",
+  "human_reviewed": false
+}

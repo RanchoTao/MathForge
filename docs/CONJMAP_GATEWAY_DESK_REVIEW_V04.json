@@ -1,0 +1,17 @@
+{
+  "reviewed_at": "2026-10-28",
+  "reviewer": "Separate ConjMap V0.4 dossier/code review agent",
+  "review_kind": "AGENT_DESK_REVIEW_READY",
+  "human_reviewed": false,
+  "research_execution_performed_by_reviewer": false,
+  "scope": "Only the engine-owned, one-task, offline Fin2 known-result calibration gateway",
+  "fixed_findings": ["immutable execution mode and code provenance", "engine-root real-task lifetime reservation", "live controller/worker recovery guard", "setup failure finalization", "signed attempt narrative", "database-independent watchdog", "explicit additive protocol boundary", "runtime read-only historical snapshot binding", "transactional cancellation/recovery race guards"],
+  "sha256": {
+    "src/mathforge/source_audit.py": "e84a7df3b78235dfbf3ba88460c2225dd6ab7c2e32b08ea4553ed3f6e39571ab",
+    "src/mathforge/source_audit_worker.py": "8b54c710e492a0965944bd81fbd152483a37cd782b26b8dbf854f31014b771c4",
+    "src/mathforge/gateway.py": "50590aa1b4d105133bb43936de999ccc2b14a93dc3094f6bc9dbf1dbfd8407f5",
+    "src/mathforge/windows_budget.py": "968bb15ebee9a2e2b097878cc6d5695356cc0572eec17cad7f512d99fb81d4eb",
+    "sources/conjmap-fin2/ADMISSION.json": "e0e6f539793fd093b397bae15fe7b35c13d2d3f97cefbed9d7b909b32f04f66d"
+  },
+  "limitations": ["Shared local HMAC trust is not public signature verification", "Fixed trusted worker and audit hook are not a hostile-code sandbox", "Finite computational table is not Lean or a proof of the general conjecture", "PID ambiguity fails closed", "No actual integration outcome is asserted by this review"]
+}
