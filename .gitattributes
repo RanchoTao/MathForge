@@ -1,0 +1,6 @@
+# Immutable V0.4 source/code byte hashes must survive Windows checkouts.
+sources/conjmap-fin2/** text eol=lf
+src/mathforge/source_audit*.py text eol=lf
+src/mathforge/gateway.py text eol=lf
+src/mathforge/windows_budget.py text eol=lf
+docs/CONJMAP_GATEWAY_DESK_REVIEW_V04.json text eol=lf
